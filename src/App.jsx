@@ -1,26 +1,17 @@
-import { useState } from 'react';
-import GeneralInfo from './components/general-info';
-
+import GeneralInfo from "./components/general-info";
+import "water.css/out/water.css";
+import "./styles/index.css";
 
 function App() {
-  const [generalInfo, setGeneralInfo] = useState(null);
-
   return (
-    <div>
-      <GeneralInfo onSubmitInfo={setGeneralInfo} />
-
+    <div className="main-container">
       <div>
-         {/* General Section */}
-        {generalInfo && (
-          <>
-            <p>{generalInfo.fullName}</p>
-            <p>{generalInfo.email}</p>
-            <p>{generalInfo.phoneNumber}</p>
-          </>
-        )}
+        <h1>Infomation</h1>
+        <GeneralInfo></GeneralInfo>
       </div>
+      <div></div>
     </div>
   );
 }
 
-export default App
+export default App;

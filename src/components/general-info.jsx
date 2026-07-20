@@ -1,25 +1,57 @@
-export default function GeneralInfo ({ onSubmitInfo }){
-    function handleSubmit(e) {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
-        const formJson = Object.fromEntries(formData.entries());
-        onSubmitInfo(formJson)
-    }
-    return <>
-    <h2>General Info</h2>
-    <form method="post" onSubmit={handleSubmit}>
-        <label>
-            Full Name <input name="fullName"/>
+import { useState } from "react";
+export default function GeneralInfo() {
+  const [inputs, setInputs] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+  });
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputs);
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="fullName">
+          Full Name
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            value={inputs.fullName}
+            onChange={handleChange}
+          />
         </label>
-        <label>
-            E-mail <input name="email" type="email"/>
+        <label htmlFor="email">
+          Email
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={inputs.email}
+            onChange={handleChange}
+          />
         </label>
-        <label>
-            Phone Number <input name="phoneNumber" type="tel"/>
+        <label htmlFor="phoneNumber">
+          Phone Number
+          <input
+            type="tel"
+            id="phoneNumber"
+            name="phoneNumber"
+            value={inputs.phoneNumber}
+            onChange={handleChange}
+          />
         </label>
-        <button type="reset">Reset form</button>
-        <button type="submit">Submit form</button>
-    </form>
+        <input type="submit" />
+      </form>
     </>
+  );
 }
