@@ -32,6 +32,7 @@ export default function GeneralInfo({ onSubmitInfo }) {
             name="fullName"
             value={inputs.fullName}
             onChange={handleChange}
+            disabled={!Editing}
           />
         </label>
         <label htmlFor="email">
@@ -42,6 +43,7 @@ export default function GeneralInfo({ onSubmitInfo }) {
             name="email"
             value={inputs.email}
             onChange={handleChange}
+            disabled={!Editing}
           />
         </label>
         <label htmlFor="phoneNumber">
@@ -52,12 +54,16 @@ export default function GeneralInfo({ onSubmitInfo }) {
             name="phoneNumber"
             value={inputs.phoneNumber}
             onChange={handleChange}
+            disabled={!Editing}
           />
         </label>
         {Editing ? (
-          <button type="submit">Save</button>
+          <button key="submit" type="submit">
+            Save
+          </button>
         ) : (
           <button
+            key="edit"
             type="button"
             onClick={() => {
               setEditing(true);
