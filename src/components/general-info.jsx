@@ -6,7 +6,7 @@ export default function GeneralInfo({ onSubmitInfo }) {
     phoneNumber: "",
   });
 
-  const [Editing, setEditing] = useState(true);
+  const [editing, setEditing] = useState(true);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -32,7 +32,7 @@ export default function GeneralInfo({ onSubmitInfo }) {
             name="fullName"
             value={inputs.fullName}
             onChange={handleChange}
-            disabled={!Editing}
+            disabled={!editing}
           />
         </label>
         <label htmlFor="email">
@@ -43,7 +43,7 @@ export default function GeneralInfo({ onSubmitInfo }) {
             name="email"
             value={inputs.email}
             onChange={handleChange}
-            disabled={!Editing}
+            disabled={!editing}
           />
         </label>
         <label htmlFor="phoneNumber">
@@ -54,10 +54,10 @@ export default function GeneralInfo({ onSubmitInfo }) {
             name="phoneNumber"
             value={inputs.phoneNumber}
             onChange={handleChange}
-            disabled={!Editing}
+            disabled={!editing}
           />
         </label>
-        {Editing ? (
+        {editing ? (
           <button key="submit" type="submit">
             Save
           </button>
