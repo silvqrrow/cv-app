@@ -76,8 +76,19 @@ h6 {
 
 .main-container {
   display: flex;
-  max-width: 2000px;
+  padding: 40px;
   border: 3px solid black;
+  max-width: 1500px;
   margin: 0 auto;
   justify-content: space-between;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+page {
+  background-color: #e4e4e4;
+  color: #0f0f0f;
 }

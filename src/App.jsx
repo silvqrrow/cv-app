@@ -1,15 +1,19 @@
+import { useState } from "react";
+import Render from "./components/render";
 import GeneralInfo from "./components/general-info";
-import "water.css/out/water.css";
 import "./styles/index.css";
 
 function App() {
+  const [generalInfo, setGeneralInfo] = useState({});
+
   return (
     <div className="main-container">
       <div>
-        <h1>Infomation</h1>
-        <GeneralInfo></GeneralInfo>
+        <GeneralInfo onSubmitInfo={setGeneralInfo} />
       </div>
-      <div></div>
+      <div>
+        <Render generalInfo={generalInfo} />
+      </div>
     </div>
   );
 }

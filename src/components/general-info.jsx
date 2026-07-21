@@ -1,10 +1,12 @@
 import { useState } from "react";
-export default function GeneralInfo() {
+export default function GeneralInfo({ onSubmitInfo }) {
   const [inputs, setInputs] = useState({
     fullName: "",
     email: "",
     phoneNumber: "",
   });
+
+  const [Editing, setEditing] = useState(true);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -13,8 +15,10 @@ export default function GeneralInfo() {
   };
 
   const handleSubmit = (e) => {
+    console.log("SUBMIT");
     e.preventDefault();
-    console.log(inputs);
+    onSubmitInfo(inputs);
+    setEditing(false);
   };
 
   return (
@@ -50,7 +54,18 @@ export default function GeneralInfo() {
             onChange={handleChange}
           />
         </label>
-        <input type="submit" />
+        {Editing ? (
+          <button type="submit">Save</button>
+        ) : (
+          <button
+            type="button"
+            onClick={() => {
+              setEditing(true);
+            }}
+          >
+            Edit
+          </button>
+        )}
       </form>
     </>
   );
